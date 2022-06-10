@@ -1,8 +1,8 @@
 const statusDisplay = document.querySelector('.status');
 let gameActive = true;
 let currentPlayer = "X";
-let gameState = ["", "", "", "", "", "", "", "", ""];
-const winningMessage = () => `Speler ${currentPlayer} Heeft gewonnen! <a href="level2.html">Ga naar Level 2</a>`;
+let gameState = ["", "", "", "", "", "", "", "", "","", "", "", ""];
+const winningMessage = () => `Speler ${currentPlayer} Heeft gewonnen!`;
 const drawMessage = () => `Het spel heeft is gelijkgespeeld!`;
 const currentPlayerTurn = () => `het is ${currentPlayer}'s beurt`;
 
@@ -55,7 +55,8 @@ const winningConditions = [
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
+    [9, 10, 11]
 ];
 
 // whether you won the round or not
@@ -66,10 +67,11 @@ function resultValidation() {
         let a = gameState[winCondition[0]];
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
-        if (a === '' || b === '' || c === '') {
+        let d = gameState[winCondition[3]];
+        if (a === '' || b === '' || c === '' ||d === '') {
             continue;
         }
-        if (a === b && b === c) {
+        if (a === b && b === c && c === d) {
             roundWon = true;
             break
         }
