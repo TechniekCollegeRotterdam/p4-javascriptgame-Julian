@@ -1,11 +1,13 @@
 const statusDisplay = document.querySelector('.status');
 let gameActive = true;
 let currentPlayer = "X";
+// de speelveld
 let gameState = ["", "", "", "", "", "", "", "", ""];
 const winningMessage = () => `Speler ${currentPlayer} Heeft gewonnen! <a href="level2.html">Ga naar Level 2</a>`;
 const drawMessage = () => `Het spel heeft is gelijkgespeeld!`;
 const currentPlayerTurn = () => `het is ${currentPlayer}'s beurt`;
 
+// hier wordt de result welke cell is gespeeld playerchange en welke cell geclicked is
 statusDisplay.innerHTML = currentPlayerTurn();
 function cellPlayed() {
 
@@ -46,7 +48,7 @@ function cellPlayed(clickedCell, clickedCellIndex) {
     clickedCell.innerHTML = currentPlayer;
 }
 
-// the positions
+// the win combinations
 const winningConditions = [
     [0, 1, 2],
     [3, 4, 5],
