@@ -1,7 +1,7 @@
 let origBoard;
 const HUMAN_PLAYER = 'X';
 const AI_PLAYER    = 'O';
-
+// how you can win
 const winCombos = [
     [0, 1, 2],
     [3, 4, 5],
