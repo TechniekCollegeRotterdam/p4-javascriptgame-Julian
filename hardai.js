@@ -1,7 +1,7 @@
 let origBoard;
 const HUMAN_PLAYER = 'X';
 const AI_PLAYER = 'O';
-
+// the combos you can win
 const winCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -15,9 +15,11 @@ const winCombos = [
     [2, 4, 6]
 ];
 
+// the game starts
 const cells = document.getElementsByClassName('position');
 onStartGame();
 
+// game is active
 function onStartGame() {
     // console.log('Starting Game');
     document.querySelector('.end-game').style.display = 'none';
@@ -31,6 +33,7 @@ function onStartGame() {
     }
 };
 
+// checks if the spot is taken or that you can put it in the cell
 function onTurnClick(e) {
     // console.log(e.target.id);
     const { id: squareId } = e.target;
@@ -44,7 +47,7 @@ function onTurnClick(e) {
         alert(message);
     }
 }
-
+// checks if you won
 function onTurn(squareId, player) {
     origBoard[squareId] = player;
     document.getElementById(squareId).innerText = player;
@@ -55,6 +58,7 @@ function onTurn(squareId, player) {
     }
 }
 
+// when you win
 function onCheckWin(board, player) {
     let plays = board.reduce((a, e, i) => {
         return (e === player) ? a.concat(i) : a;
@@ -72,6 +76,7 @@ function onCheckWin(board, player) {
     return gameWon;
 }
 
+// game is over you start a new game
 function onGameOver({ index, player }) {
     for (let i of winCombos[index]) {
         const color = (player === HUMAN_PLAYER) ? '#2196f3' : '#f44336';
